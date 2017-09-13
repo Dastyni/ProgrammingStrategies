@@ -1,0 +1,16 @@
+STRATEGY decomposeProblem (prompt)
+  Set goal to the final goal of the problem required to fulfill prompt.
+  IF goal contains nothing
+    Return nothing.
+  SET subgoals to output of CALL decomposeGoal (goal)
+	  RETURN subgoals
+
+
+STRATEGY decomposeGoal (goal)
+  IF goal can not be broken down into one or more tasks necessary to achieve goal
+    Return nothing.
+   SET subgoals to the list of tasks goal can be broken down into.
+  SET goalList to an empty list
+  FOREACH goal in subgoals
+    Append to goalList output of CALL decomposeGoal (goal)
+    RETURN goalList
